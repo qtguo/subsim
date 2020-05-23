@@ -56,16 +56,13 @@ int main(int argc, char* argv[])
     Arg.build_outfilename(seedSize, (ProbDist)probDist, graph);
     std::cout << "---The Begin of " << Arg._outFileName << "---\n";
 
-    double RRsizeAvg = tAlg.estimateRRSize();
-    std::cout << "The average size of RR sets: " << RRsizeAvg << std::endl;
-    if (RRsizeAvg < 100)
+    if (!Arg._hist)
     {
-        std::cout << "run SUBSIM only" << std::endl;
         tAlg.subsimOnly(seedSize, Arg._eps, delta);
     }
     else
     {
-        std::cout <<"run SUBSIM + HIST" <<std::endl;
+        std::cout <<"HIST is invoked." <<std::endl;
         if (seedSize < 10)
         {
             tAlg.subsimWithTrunc(seedSize, Arg._eps, delta);

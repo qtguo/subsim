@@ -49,6 +49,9 @@ public:
     // sample RR set with the vanilla method
     bool _vanilla = false;
 
+    // use hist algorithm
+    bool _hist = false;
+
     Argument(int argc, char* argv[])
     {
         std::string param, value;
@@ -73,6 +76,7 @@ public:
             else if (!param.compare("-wcvariant")) _wcVar = stod(value);
             else if (!param.compare("-skew")) _skewType = value;
             else if (!param.compare("-vanilla")) _vanilla = (value == "1");
+            else if (!param.compare("-hist")) _hist = (value == "1");
         }
 
         if (_wcVar <= 0)
